@@ -7,6 +7,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/veljkocukic/time.git"
+  },
   "author": "veljkocukic@gmail.com",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/veljkocukic/time/issues"
+  },
+  "homepage": "https://github.com/veljkocukic/time#readme"
 }

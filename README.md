@@ -1,6 +1,6 @@
 # VDate
 
-VDate is a simple library of functionalities intended to make displaying date on pages easier.
+VDate is a simple library of functionalities intended to make displaying date on pages easier by providing various format options and more.
 
 ## Installation
 
