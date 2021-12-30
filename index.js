@@ -1,4 +1,4 @@
-class Tout {
+export class VDate {
 
     constructor(date){
         date = new Date(date)
@@ -6,6 +6,31 @@ class Tout {
         this.month = date.getMonth()+1
         this.year = date.getFullYear()
         this.date = date
+        this.addZero = (num)=>{
+            if(parseInt(num)<=9){
+              return "0"+num.toString()
+            }
+            return num
+        }
+
+        this.dayOfTheYear = (a)=>{ 
+            a = new Date(a)     
+            let currentYear = a.getFullYear();
+            let currentMonth = a.getMonth(); 
+            let currentDay = a.getDate(); 
+            let date365 = 0
+            let monthLength = [31,28,31,30,31,30,31,31,30,31,30,31];
+            
+            let leapYear = new Date(currentYear, 1, 29); 
+            if (leapYear.getDate() == 29) { // If it's a leap year, changes 28 to 29
+                monthLength[1] = 29;
+            }
+            
+            for ( let i=0; i < currentMonth; i++ ) { 
+                date365 = date365 + monthLength[i];
+            }
+            return date365 = date365 + currentDay; // Done!}
+        }
     }
 
     get getDay(){
@@ -90,14 +115,6 @@ class Tout {
         return date1.getSeconds()===date2.getSeconds()
     }
 
-
-    static addZero(num){
-        if(parseInt(num)<=9){
-          return "0"+num.toString()
-        }
-        return num
-      }
-
     static dayOfTheYear(a){ 
         a = new Date(a)     
         let currentYear = a.getFullYear();
@@ -111,7 +128,7 @@ class Tout {
             monthLength[1] = 29;
         }
         
-        for ( i=0; i < currentMonth; i++ ) { 
+        for ( let i=0; i < currentMonth; i++ ) { 
             date365 = date365 + monthLength[i];
         }
         return date365 = date365 + currentDay; // Done!}
@@ -130,5 +147,3 @@ class Tout {
         return this.addZero(this.date.getHours())+":"+this.addZero(this.date.getMinutes())+":"+this.addZero(this.date.getSeconds())
     }
 }
-
-module.exports=Tout

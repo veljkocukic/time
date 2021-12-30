@@ -1,11 +1,12 @@
 {
-  "name": "time-out",
+  "name": "vdate",
   "version": "1.0.0",
   "description": "A simple package for easier date display",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "veljkocukic@gmail.com",
-  "license": "ISC"
+  "license": "MIT"
 }
