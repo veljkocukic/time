@@ -13,7 +13,7 @@ export class VDate {
             return num
         }
 
-        this.dayOfTheYear = (a) => {
+        this.dayOfTheYear = (a) => { //Taken from StackOverflow https://stackoverflow.com/a/50116028
             a = new Date(a)
             let currentYear = a.getFullYear();
             let currentMonth = a.getMonth();
@@ -115,7 +115,7 @@ export class VDate {
         return date1.getSeconds() === date2.getSeconds()
     }
 
-    static dayOfTheYear(a) { //Taken from StackOverflow
+    static dayOfTheYear(a) { //Taken from StackOverflow https://stackoverflow.com/a/50116028
         a = new Date(a)
         let currentYear = a.getFullYear();
         let currentMonth = a.getMonth();
