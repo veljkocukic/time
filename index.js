@@ -33,25 +33,29 @@ export class VDate {
         }
     }
 
-    get getDay() {
+    getDay() {
         return this.day
     }
 
-    get getMonth() {
+    getMonth() {
         return this.month
     }
 
-    get getYear() {
+    getYear() {
         return this.year
     }
 
 
-    set setYear(year) {
+    setYear(year) {
         this.year = parseInt(year)
+        this.date = new Date(parseInt(year), this.month - 1, this.day)
     }
 
-    set setMonth(month) {
+    // Important: Month input is not the JS Date month index but the actual number of the month,
+    // for example, input for January is not 0 but 1
+    setMonth(month) {
         if (parseInt(month) < 13 && parseInt(month) > 0) {
+            this.date = new Date(this.year, parseInt(month - 1), this.day)
             this.month = parseInt(month)
         } else {
             console.log("Cannot set month with number bigger than 12 or smaller than 1")
@@ -59,8 +63,9 @@ export class VDate {
 
     }
 
-    set setDay(day) { ////Needs further validation
+    setDay(day) { ////Needs further validation
         if (parseInt(day) < 32 && parseInt(day) > 0) {
+            this.date = new Date(this.year, this.month - 1, parseInt(day))
             this.day = parseInt(day)
         } else {
             console.log("Cannot set day with number bigger than 31 or smaller than 1")
@@ -68,7 +73,21 @@ export class VDate {
     }
 
     addYears(num) {
+        this.date = new Date(this.year += parseInt(num), this.month - 1, this.day)
         this.year = this.year += parseInt(num)
+    }
+
+    addMonths(num) {
+        num = parseInt(num)
+        let years = Math.floor(num / 12)
+        let months = this.month + (num - years * 12)
+        if (this.month + months > 12) {
+            years += Math.floor((this.month + months) / 12)
+            months = this.month + months - Math.floor((this.month + months) / 12) * 12
+        }
+
+        this.month = months
+        this.date = new Date(this.year += years, months - 1, this.day)
     }
 
     dmyDot() {
@@ -112,7 +131,7 @@ export class VDate {
     static equal(date1, date2) {
         date1 = new Date(date1)
         date2 = new Date(date2)
-        return date1.getSeconds() === date2.getSeconds()
+        return date1.getTime() === date2.getTime()
     }
 
     static dayOfTheYear(a) { //Taken from StackOverflow https://stackoverflow.com/a/50116028
@@ -138,8 +157,7 @@ export class VDate {
         return Math.floor(this.dayOfTheYear(this.date) / 7)
     }
 
-    getTime(date) {
-        date = new Date(date)
+    getTime() {
         return this.addZero(this.date.getHours()) + ":" + this.addZero(this.date.getMinutes())
     }
 
@@ -147,7 +165,19 @@ export class VDate {
         return this.addZero(this.date.getHours()) + ":" + this.addZero(this.date.getMinutes()) + ":" + this.addZero(this.date.getSeconds())
     }
 
+    getMonthName() {
+        let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+        return months[this.date.getMonth()]
+    }
 
+    getMonthShort() {
+        let months = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."]
+        return months[this.date.getMonth()]
+    }
 
+    isLeapYear() {
+        let leapYear = new Date(this.date.getFullYear(), 1, 29);
+        return (leapYear.getDate() == 29)
+    }
 
 }
