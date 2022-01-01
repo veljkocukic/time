@@ -1,6 +1,6 @@
 {
   "name": "vdate",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple package for easier date display",
   "main": "index.js",
   "type": "module",
@@ -16,5 +16,5 @@
   "bugs": {
     "url": "https://github.com/veljkocukic/time/issues"
   },
-  "homepage": "https://github.com/veljkocukic/time#readme"
+  "homepage": "https://vdate.netlify.app/"
 }

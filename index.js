@@ -1,7 +1,9 @@
 export class VDate {
 
+
     constructor(date) {
         date = new Date(date)
+
         this.day = date.getDate()
         this.month = date.getMonth() + 1
         this.year = date.getFullYear()
@@ -13,8 +15,8 @@ export class VDate {
             return num
         }
 
-        this.dayOfTheYear = (a) => { //Taken from StackOverflow https://stackoverflow.com/a/50116028
-            a = new Date(a)
+        this.dayOfTheYear = () => { //Taken from StackOverflow https://stackoverflow.com/a/50116028
+            let a = this.date
             let currentYear = a.getFullYear();
             let currentMonth = a.getMonth();
             let currentDay = a.getDate();
@@ -173,6 +175,16 @@ export class VDate {
     getMonthShort() {
         let months = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."]
         return months[this.date.getMonth()]
+    }
+
+    getDayName() {
+        let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        return days[this.date.getDay() + 1]
+    }
+
+    getDayShort() {
+        let days = ["Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.", "Sun."]
+        return days[this.date.getDay() + 1]
     }
 
     isLeapYear() {
